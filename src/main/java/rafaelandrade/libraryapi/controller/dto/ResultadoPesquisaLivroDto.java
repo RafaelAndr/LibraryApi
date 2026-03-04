@@ -12,7 +12,6 @@ public record ResultadoPesquisaLivroDto (
         LocalDate dataPublicacao,
         Genero genero,
         BigDecimal preco,
-        AutorDto idAutor
+        AutorDto autor
     ){
-
 }

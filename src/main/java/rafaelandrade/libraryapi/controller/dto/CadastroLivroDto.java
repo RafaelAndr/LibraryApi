@@ -25,13 +25,4 @@ public record CadastroLivroDto(
         @NotNull(message = "Campo obrigatório")
         UUID idAutor
 ) {
-//    public Livro mapearParaLivro(){
-//        Livro livro = new Livro();
-//        livro.setIsbn(this.isbn);
-//        livro.setTitulo(this.titulo);
-//        livro.setDataPublicacao(this.dataPublicacao);
-//        livro.setGenero(this.genero);
-//        livro.setPreco(this.preco);
-//        //livro.setIdAutor(this.idAutor);
-//    }
 }
