@@ -1,5 +1,6 @@
 package rafaelandrade.libraryapi.controller.dto;
 
+import rafaelandrade.libraryapi.model.Editora;
 import rafaelandrade.libraryapi.model.Genero;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ public record ResultadoPesquisaLivroDto (
         LocalDate dataPublicacao,
         Genero genero,
         BigDecimal preco,
-        AutorDto autor
+        AutorDto autor,
+        EditoraDto editora
     ){
 }

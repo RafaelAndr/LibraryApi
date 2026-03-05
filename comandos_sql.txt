@@ -19,5 +19,13 @@ create table livro (
    data_atualizacao timestamp,
    id_usuario uuid,
    id_autor uuid not null references autor(id),
+   id_editora uuid not null references editora(id),
    constraint chk_genero check (genero in ('FICCAO', 'FANTASIA', 'MISTERIO','ROMANCE', 'BIOGRAFIA', 'CIENCIA') )
+);
+
+create table editora (
+	id uuid not null primary key,
+	nome varchar(15) not null,
+	cnpj varchar(20) not null unique,
+	email varchar(40),
 );
