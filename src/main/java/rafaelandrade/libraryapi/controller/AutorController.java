@@ -42,7 +42,7 @@ public class AutorController implements GenericController {
 
         System.out.println(authentication);
         Autor autor = mapper.toEntity(dto);
-        autor.setIdUsuario(usuario.getId());
+        autor.setUsuario(usuario);
 
         service.salvar(autor);
 
