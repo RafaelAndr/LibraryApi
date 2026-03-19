@@ -31,22 +31,34 @@ public class AutorController implements GenericController {
     private final AutorMapper mapper;
     private final UsuarioService usuarioService;
 
+//    @PostMapping
+//    @PreAuthorize("hasRole('GERENTE')")
+//    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDto dto,
+//                                         Authentication authentication) {
+//        UserDetails usuarioLogado = (UserDetails) authentication.getPrincipal();
+//
+//        Usuario usuario = usuarioService.obterPorLogin(usuarioLogado.getUsername());
+//
+//
+//        System.out.println(authentication);
+//        Autor autor = mapper.toEntity(dto);
+//        autor.setUsuario(usuario);
+//
+//        service.salvar(autor);
+//
+//        //http://localhost:8080/autores/id
+//        URI location = gerarHeaderLocation(autor.getId());
+//        return ResponseEntity.created(location).build();
+//    }
+
     @PostMapping
     @PreAuthorize("hasRole('GERENTE')")
-    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDto dto,
-                                         Authentication authentication) {
-        UserDetails usuarioLogado = (UserDetails) authentication.getPrincipal();
+    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDto dto) {
 
-        Usuario usuario = usuarioService.obterPorLogin(usuarioLogado.getUsername());
-
-
-        System.out.println(authentication);
         Autor autor = mapper.toEntity(dto);
-        autor.setUsuario(usuario);
 
         service.salvar(autor);
 
-        //http://localhost:8080/autores/id
         URI location = gerarHeaderLocation(autor.getId());
         return ResponseEntity.created(location).build();
     }

@@ -3,6 +3,7 @@ package rafaelandrade.libraryapi.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import rafaelandrade.libraryapi.dto.EditoraDto;
 import rafaelandrade.libraryapi.mappers.EditoraMapper;
@@ -21,6 +22,7 @@ public class EditoraController implements GenericController {
     private final EditoraService service;
 
     @PostMapping
+    @PreAuthorize("hasRole('GERENTE')")
     public ResponseEntity<Object> salvar(@RequestBody @Valid EditoraDto dto){
         Editora editora = mapper.toEntity(dto);
 

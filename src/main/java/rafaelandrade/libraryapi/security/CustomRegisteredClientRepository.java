@@ -47,7 +47,6 @@ public class CustomRegisteredClientRepository implements RegisteredClientReposit
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .tokenSettings(tokenSettings)
                 .clientSettings(clientSettings)
-                .build()
-                ;
+                .build();
     }
 }
