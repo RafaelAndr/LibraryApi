@@ -14,11 +14,13 @@ import rafaelandrade.libraryapi.model.Usuario;
 import rafaelandrade.libraryapi.service.UsuarioService;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class SocialLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
+    private static final String PATTERN_PASSWORD = "123";
     private final UsuarioService usuarioService;
 
     public void onAuthenticationSuccess(
@@ -33,6 +35,16 @@ public class SocialLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         String email = oAuth2User.getAttribute("email");
 
         Usuario user = usuarioService.getByEmail(email);
+
+        if (user == null){
+            user = new Usuario();
+            user.setEmail(email);
+            user.setLogin(email);
+            user.setSenha(PATTERN_PASSWORD);
+            user.setRoles(List.of("OPERADOR"));
+            usuarioService.salvar(user);
+
+        }
 
         authentication = new CustomAuthentication(user);
 
